@@ -59,18 +59,18 @@ body.lock-scroll{
   transition:transform 1.2s cubic-bezier(.12,.85,.18,1.1);
 }
 
-/* 문 뒤 라이트 — 자연 페이드 */
+/* 문 뒤 라이트 */
 .door-light{
   position:fixed;
   inset:0;
   background:radial-gradient(circle at center,
     rgba(255,255,255,0.8),
-    rgba(255,255,255,0.15),
+    rgba(255,255,255,0.1),
     transparent 70%);
   opacity:0;
   z-index:40;
   pointer-events:none;
-  filter:blur(20px); /* 🔥 최적화됨 */
+  filter:blur(25px);
   transition:opacity 1.3s ease-out;
 }
 
@@ -207,6 +207,13 @@ body.lock-scroll{
   font-weight:700;
 }
 
+.section-text{
+  font-size:18px;
+  line-height:1.8;
+  color:#cbd5e1;
+  text-align:center;
+}
+
 .divider{
   height:3px;
   background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));
@@ -222,7 +229,7 @@ body.lock-scroll{
 }
 
 /* ============================
-      가로 라인업
+      라인업 카드
 ============================ */
 .secret-lineup{
   overflow-x:auto;
@@ -248,20 +255,6 @@ body.lock-scroll{
 .secret-card:hover{
   transform:translateY(-8px);
   box-shadow:0 0 35px rgba(34,211,238,.35);
-}
-
-.secret-card::before{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    radial-gradient(circle at 50% 130%, rgba(34,211,238,.18), transparent 65%),
-    radial-gradient(circle at 20% 20%, rgba(168,85,247,.18), transparent 65%),
-    radial-gradient(circle at 80% 10%, rgba(249,115,22,.14), transparent 50%);
-  opacity:.22;
-  transition:.35s;
-}
-.secret-card:hover::before{
-  opacity:.5;
 }
 
 .secret-title{
@@ -336,15 +329,31 @@ body.lock-scroll{
 <!-- CONTENT -->
 <div class="content">
 
+  <!-- Secret Story -->
   <div class="section">
-    <div class="section-title">Secret Playlist Live</div>
+    <div class="section-title">Secret Story</div>
     <div class="divider"></div>
-    <div class="section-text" style="text-align:center;">
-      문이 열리는 순간,<br>
-      당신은 아티스트들의 숨겨진 세계에 입장합니다.
+    <div class="section-text">
+      오래전부터 아티스트들만 알고 있던 ‘숨겨진 플레이리스트’.  
+      세상에 공개되지 않은 미공개 곡, 실험적인 사운드,  
+      그리고 단 한번도 무대에 올라오지 않았던 비밀의 노래들—  
+      <br><br>
+      이번 공연은 그 모든 비밀을 <strong>처음으로 공개하는 순간</strong>입니다.
     </div>
   </div>
 
+  <!-- Mood Visual -->
+  <div class="section" style="padding:0; margin-top:80px;">
+    <div style="
+      height: 350px;
+      background: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d')
+        center/cover no-repeat;
+      border-radius: 25px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    "></div>
+  </div>
+
+  <!-- Line-Up -->
   <div class="section">
     <div class="section-title">Line-Up</div>
     <div class="divider"></div>
@@ -359,18 +368,57 @@ body.lock-scroll{
     </div>
   </div>
 
+  <!-- Concept -->
+  <div class="section" style="text-align:center;">
+    <div class="section-title">Concept</div>
+    <div class="divider"></div>
+
+    <div style="font-size:22px; line-height:2; color:#cbd5e1;">
+      ✦ Hidden Tracks ✦<br>
+      ✦ Lost Melodies ✦<br>
+      ✦ Secret Sessions ✦<br>
+      ✦ Unreleased Moments ✦
+    </div>
+  </div>
+
+  <!-- What Awaits You -->
+  <div class="section">
+    <div class="section-title">What Awaits You</div>
+    <div class="divider"></div>
+    <div class="section-text">
+      무대 뒤에서 감춰왔던 진짜 음악. <br>
+      단 한 번도 세상에 들려주지 않았던 프라이빗 라이브. <br>
+      오직 이 날, 이 장소에서만 만날 수 있는 비밀의 무대. <br><br>
+      이 밤은 기록되지 않습니다.  
+      <strong>당신의 기억 속에만 남을 것입니다.</strong>
+    </div>
+  </div>
+
+  <!-- Event Info -->
   <div class="section">
     <div class="section-title">Event Info</div>
     <div class="divider"></div>
-    <div class="section-text" style="text-align:center;">
+    <div class="section-text">
       📅 2025. 11. 29<br>
-      ⏱ PM 9:40. 입장  <br>
-      ⏱ PM 10.00. 공연시작  <br>
+      ⏱ PM 9:40 입장<br>
+      ⏱ PM 10:00 공연 시작<br>
       📍 리얼월드 페스티벌장
     </div>
   </div>
 
-  <div class="footer">Ⓡ Riz entertainment</div>
+  <!-- Footer -->
+  <div class="footer">
+    <div style="font-size:14px; opacity:.7;">© SECRET PLAYLIST PROJECT</div>
+    <div style="
+      margin-top:10px;
+      font-size:12px;
+      letter-spacing:0.15em;
+      opacity:.5;
+    ">
+      RIZ ENTERTAINMENT • REALWORLD SPECIAL EDITION
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -408,24 +456,20 @@ keyBtn.onclick=()=>{
     bgLight.style.opacity="1";
   },1300);
 
-  /* HERO 뒤로 */
+  /* HERO 뒤로 이동 */
   setTimeout(()=>{ hero.classList.add("behind"); },2600);
 
-  /* 문 + 라이트 부드럽게 제거 */
+  /* 문 + 라이트 페이드아웃 */
   setTimeout(()=>{
 
-    /* 문 자체 페이드아웃 */
     leftDoor.style.opacity="0";
     rightDoor.style.opacity="0";
-
-    /* 라이트 페이드 */
     doorLight.style.opacity="0";
 
-    /* 0.9초 뒤 클릭 불가 처리 */
     setTimeout(()=>{
-      leftDoor.style.pointerEvents="none";
-      rightDoor.style.pointerEvents="none";
-      doorLight.style.pointerEvents="none";
+      leftDoor.style.display="none";
+      rightDoor.style.display="none";
+      doorLight.style.display="none";
     },900);
 
     document.body.classList.remove("lock-scroll");
@@ -436,7 +480,7 @@ keyBtn.onclick=()=>{
   document.body.classList.add("lock-scroll");
 };
 
-/* 스크롤 섹션 등장 */
+/* 스크롤 시 등장 */
 const sections=document.querySelectorAll(".section");
 window.addEventListener("scroll",()=>{
   const trigger=window.innerHeight*0.85;
@@ -450,4 +494,3 @@ window.addEventListener("scroll",()=>{
 
 </body>
 </html>
-
