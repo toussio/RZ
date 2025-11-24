@@ -219,29 +219,30 @@ body.lock-scroll{ overflow:hidden; }
 }
 
 /* ============================
-   Secret Line-Up
+   Secret Line-Up (수정됨)
 ============================ */
 .secret-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
   margin-top:20px;
 }
 
 .secret-card{
   background:#0b0b13;
-  border-radius:22px;
-  padding:35px 20px;
+  border-radius:25px;
+  padding:50px 25px;
   text-align:center;
   border:1px solid rgba(255,255,255,0.06);
   box-shadow:0 0 25px rgba(0,0,0,.5);
   position:relative;
   overflow:hidden;
+  height:330px;
   transition:.35s;
   cursor:pointer;
 }
 .secret-card:hover{
-  transform:translateY(-8px);
+  transform:translateY(-10px);
   box-shadow:0 0 35px rgba(34,211,238,.35);
 }
 
@@ -256,25 +257,22 @@ body.lock-scroll{ overflow:hidden; }
   transition:opacity .45s ease;
   z-index:-1;
   filter:brightness(.7);
-  border-radius:22px;
+  border-radius:25px;
 }
 .secret-card:hover img{
   opacity:1;
 }
 
+/* ??? 표시만 유지 */
 .secret-card .q{
-  font-size:45px;
-  color:#ffffff15;
+  font-size:55px;
+  color:#ffffff22;
   font-weight:900;
-  margin-bottom:10px;
+  margin-bottom:0;
 }
-.secret-card .name{
-  font-size:26px;
-  background:linear-gradient(120deg,var(--c1),var(--c2),var(--c3));
-  -webkit-background-clip:text;
-  color:transparent;
-  font-weight:700;
-}
+
+/* 이름 제거됨 */
+.secret-card .name{ display:none; }
 
 /* Footer */
 .footer{
@@ -340,7 +338,6 @@ body.lock-scroll{ overflow:hidden; }
       <div class="secret-card">
         <img src="img/mc.jpg" alt="">
         <div class="q">???</div>
-        <div class="name">MC</div>
       </div>
     </div>
 
@@ -349,21 +346,18 @@ body.lock-scroll{ overflow:hidden; }
     <div class="secret-grid">
 
       <div class="secret-card">
-        <img src="https://i.imgur.com/A7WHIMB.png" alt="">
+        <img src="img/sunja.jpg" alt="">
         <div class="q">???</div>
-        <div class="name">순자</div>
       </div>
 
       <div class="secret-card">
         <img src="img/chopa.jpg" alt="">
         <div class="q">???</div>
-        <div class="name">쵸파</div>
       </div>
 
       <div class="secret-card">
         <img src="img/samchil.jpg" alt="">
         <div class="q">???</div>
-        <div class="name">삼칠</div>
       </div>
 
     </div>
@@ -375,13 +369,11 @@ body.lock-scroll{ overflow:hidden; }
       <div class="secret-card">
         <img src="img/guest1.jpg" alt="">
         <div class="q">???</div>
-        <div class="name">Guest 1</div>
       </div>
 
       <div class="secret-card">
         <img src="img/guest2.jpg" alt="">
         <div class="q">???</div>
-        <div class="name">Guest 2</div>
       </div>
 
     </div>
@@ -476,4 +468,3 @@ window.addEventListener("scroll",()=>{
 
 </body>
 </html>
-
