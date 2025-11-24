@@ -44,18 +44,10 @@ body.lock-scroll{ overflow:hidden; }
   opacity:1;
   transition:opacity .7s ease-out;
 }
-
 .left-door{ left:0; border-right:1px solid #0c0c12; }
 .right-door{ right:0; border-left:1px solid #0c0c12; }
-
-.open-left{
-  transform:translateX(-100%);
-  transition:transform 1.1s cubic-bezier(.12,.85,.18,1.1);
-}
-.open-right{
-  transform:translateX(100%);
-  transition:transform 1.1s cubic-bezier(.12,.85,.18,1.1);
-}
+.open-left{ transform:translateX(-100%); transition:transform 1.1s cubic-bezier(.12,.85,.18,1.1); }
+.open-right{ transform:translateX(100%); transition:transform 1.1s cubic-bezier(.12,.85,.18,1.1); }
 
 /* 문 뒤 라이트 */
 .door-light{
@@ -94,7 +86,6 @@ body.lock-scroll{ overflow:hidden; }
   text-align:center;
   cursor:pointer;
 }
-
 .key{
   font-size:65px;
   animation:keyFloat 2.1s infinite ease-in-out;
@@ -104,17 +95,14 @@ body.lock-scroll{ overflow:hidden; }
   0%,100%{ transform:translateY(0); }
   50%{ transform:translateY(-10px); }
 }
-
 .key-container.unlock .key{
   animation:unlockSpin 1s ease forwards;
 }
-
 @keyframes unlockSpin{
   0%{ transform:scale(1) rotate(0); }
   40%{ transform:scale(1.25) rotate(80deg); }
   100%{ transform:scale(0) rotate(200deg); opacity:0; }
 }
-
 .key-text{
   font-size:15px;
   margin-top:10px;
@@ -219,7 +207,7 @@ body.lock-scroll{ overflow:hidden; }
 }
 
 /* ============================
-   Secret Line-Up (수정됨)
+   Secret Line-Up
 ============================ */
 .secret-grid{
   display:grid;
@@ -246,7 +234,6 @@ body.lock-scroll{ overflow:hidden; }
   box-shadow:0 0 35px rgba(34,211,238,.35);
 }
 
-/* ✨ 사진 등장 효과 */
 .secret-card img{
   position:absolute;
   inset:0;
@@ -259,11 +246,9 @@ body.lock-scroll{ overflow:hidden; }
   filter:brightness(.7);
   border-radius:25px;
 }
-.secret-card:hover img{
-  opacity:1;
-}
+.secret-card:hover img{ opacity:1; }
 
-/* ??? 표시만 유지 */
+/* ??? 표시 */
 .secret-card .q{
   font-size:55px;
   color:#ffffff22;
@@ -271,8 +256,20 @@ body.lock-scroll{ overflow:hidden; }
   margin-bottom:0;
 }
 
-/* 이름 제거됨 */
+/* 이름 제거 */
 .secret-card .name{ display:none; }
+
+/* ============================
+   ⭐ MC 전용 세로형 카드
+============================ */
+.mc-card{
+  height:420px !important; 
+  aspect-ratio: 3/4;
+}
+.mc-card img{
+  object-fit:cover;
+  object-position:center top;
+}
 
 /* Footer */
 .footer{
@@ -335,7 +332,7 @@ body.lock-scroll{ overflow:hidden; }
     <!-- MC -->
     <div class="section-title" style="font-size:32px; margin-top:40px;">MC</div>
     <div class="secret-grid">
-      <div class="secret-card">
+      <div class="secret-card mc-card">
         <img src="https://i.imgur.com/hl5kOGm.png" alt="">
         <div class="q">???</div>
       </div>
@@ -468,5 +465,3 @@ window.addEventListener("scroll",()=>{
 
 </body>
 </html>
-
-
