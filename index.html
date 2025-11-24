@@ -20,32 +20,16 @@
   font-family:"Pretendard",sans-serif;
 }
 
-/* 스크롤바 제거 대신 스타일링 */
+/* 스크롤바 제거 */
+body::-webkit-scrollbar{display:none;}
+body{-ms-overflow-style:none; scrollbar-width:none;}
+
 body{
   background:#05050a;
   color:var(--ink);
   overflow-x:hidden;
-  overflow-y:auto;
 }
-
-/* ✨ 네온 스타일 스크롤바 */
-body::-webkit-scrollbar{
-  width:10px;
-}
-body::-webkit-scrollbar-track{
-  background:rgba(255,255,255,0.05);
-  border-radius:10px;
-  backdrop-filter:blur(4px);
-}
-body::-webkit-scrollbar-thumb{
-  background:linear-gradient(180deg,var(--c1),var(--c2),var(--c3));
-  border-radius:10px;
-  box-shadow:0 0 12px rgba(168,85,247,0.6);
-  border:2px solid rgba(10,10,20,0.7);
-}
-body::-webkit-scrollbar-thumb:hover{
-  box-shadow:0 0 16px rgba(168,85,247,0.9);
-}
+body.lock-scroll{ overflow:hidden; }
 
 /* ============================
    🔥 문 애니메이션
@@ -157,6 +141,7 @@ body::-webkit-scrollbar-thumb:hover{
   background:linear-gradient(120deg,var(--c1),var(--c2),var(--c3));
   -webkit-background-clip:text;
   color:transparent;
+  filter:drop-shadow(0 0 30px rgba(34,211,238,0.7));
 }
 .hero-sub{
   margin-top:12px;
@@ -185,6 +170,7 @@ body::-webkit-scrollbar-thumb:hover{
   margin-top:100vh;
   padding-bottom:200px;
 }
+
 .section{
   max-width:900px;
   margin:0 auto;
@@ -197,12 +183,21 @@ body::-webkit-scrollbar-thumb:hover{
   opacity:1;
   transform:translateY(0);
 }
+
 .section-title{
   text-align:center;
   font-size:45px;
   font-weight:800;
   margin-bottom:10px;
 }
+
+.section-text{
+  line-height:1.7;
+  color:#cdd3df;
+  text-align:center;
+  font-size:20px;
+}
+
 .divider{
   height:3px;
   background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));
@@ -231,10 +226,21 @@ body::-webkit-scrollbar-thumb:hover{
   box-shadow:0 0 25px rgba(0,0,0,.5);
   position:relative;
   overflow:hidden;
-  width:260px;
-  height:330px;
+  width:260px;       /* ▶ 가수/게스트 카드 크기 복구 */
+  height:330px;      /* ▶ 가수/게스트 카드 크기 복구 */
   transition:.35s;
   cursor:pointer;
+}
+
+/* ⭐ MC 전용 카드 */
+.mc-card{
+  width:300px !important;   /* ▶ 세로형 + 적당한 가로 */
+  height:420px !important;  /* ▶ MC 카드만 크게 유지 */
+}
+
+.mc-card img{
+  object-fit:cover;
+  object-position:center top;
 }
 
 .secret-card:hover{
@@ -242,7 +248,6 @@ body::-webkit-scrollbar-thumb:hover{
   box-shadow:0 0 35px rgba(34,211,238,.35);
 }
 
-/* 사진 */
 .secret-card img{
   position:absolute;
   inset:0;
@@ -257,6 +262,7 @@ body::-webkit-scrollbar-thumb:hover{
 }
 .secret-card:hover img{ opacity:1; }
 
+/* ??? 표시 */
 .secret-card .q{
   font-size:55px;
   color:#ffffff22;
@@ -264,12 +270,15 @@ body::-webkit-scrollbar-thumb:hover{
   margin-bottom:0;
 }
 
+/* 이름 제거 */
 .secret-card .name{ display:none; }
 
-/* ⭐ MC 전용 카드 */
+/* ============================
+   ⭐ MC 전용 세로형 카드
+============================ */
 .mc-card{
-  width:300px !important;
-  height:420px !important;
+  height:420px !important; 
+  aspect-ratio: 3/4;
 }
 .mc-card img{
   object-fit:cover;
@@ -285,7 +294,6 @@ body::-webkit-scrollbar-thumb:hover{
 }
 </style>
 </head>
-
 <body>
 
 <!-- 문 뒤 라이트 -->
@@ -310,7 +318,7 @@ body::-webkit-scrollbar-thumb:hover{
   <div class="hero-sub">숨겨진 명곡을, 이 세계에 공개하다.</div>
 </div>
 
-<!-- 빛 -->
+<!-- 배경 빛 -->
 <div class="background-light" id="bgLight"></div>
 
 <!-- CONTENT -->
@@ -322,8 +330,11 @@ body::-webkit-scrollbar-thumb:hover{
     <div class="divider"></div>
     <div class="section-text">
       오래전, 아티스트들만 드나들던 비밀의 방이 있었다.<br>
-      누구에게도 들려준 적 없는 <strong>숨겨진 플레이리스트</strong>가 잠들어 있었다.<br><br>
-      오늘, 그 모든 비밀이 <strong>처음으로 공개된다.</strong>
+      그 안에는 누구에게도 들려준 적 없는 <strong>숨겨진 플레이리스트</strong>가 잠들어 있었다.<br><br>
+      실험적인 사운드, 미발표 데모, 단 한 번도 무대에 오른 적 없는 곡들—<br><br>
+      그리고 오늘,<br>
+      그 모든 비밀이 <strong>처음으로 풀립니다.</strong><br>
+      당신만을 위한 단 한 번의 공개.
     </div>
   </div>
 
@@ -336,7 +347,7 @@ body::-webkit-scrollbar-thumb:hover{
     <div class="section-title" style="font-size:32px; margin-top:40px;">MC</div>
     <div class="secret-grid">
       <div class="secret-card mc-card">
-        <img src="https://i.imgur.com/hl5kOGm.png">
+        <img src="https://i.imgur.com/hl5kOGm.png" alt="">
         <div class="q">???</div>
       </div>
     </div>
@@ -344,31 +355,38 @@ body::-webkit-scrollbar-thumb:hover{
     <!-- Main Artists -->
     <div class="section-title" style="font-size:32px; margin-top:70px;">Main Artists</div>
     <div class="secret-grid">
+
       <div class="secret-card">
-        <img src="https://i.imgur.com/A7WHIMB.png">
+        <img src="https://i.imgur.com/A7WHIMB.png" alt="">
         <div class="q">???</div>
       </div>
+
       <div class="secret-card">
-        <img src="https://i.imgur.com/04jPsFh.jpeg">
+        <img src="https://i.imgur.com/04jPsFh.jpeg" alt="">
         <div class="q">???</div>
       </div>
+
       <div class="secret-card">
-        <img src="https://i.imgur.com/kHFXGNT.png">
+        <img src="https://i.imgur.com/kHFXGNT.png" alt="">
         <div class="q">???</div>
       </div>
+
     </div>
 
     <!-- Guests -->
     <div class="section-title" style="font-size:32px; margin-top:70px;">Guests</div>
     <div class="secret-grid">
+
       <div class="secret-card">
-        <img src="https://i.imgur.com/s92hBFV.png">
+        <img src="https://i.imgur.com/s92hBFV.png" alt="">
         <div class="q">???</div>
       </div>
+
       <div class="secret-card">
-        <img src="https://i.imgur.com/s92hBFV.png">
+        <img src="https://i.imgur.com/s92hBFV.png" alt="">
         <div class="q">???</div>
       </div>
+
     </div>
   </div>
 
@@ -379,8 +397,9 @@ body::-webkit-scrollbar-thumb:hover{
     <div class="section-text">
       무대 뒤에서 감춰왔던 진짜 음악.<br>
       단 한 번도 세상에 들려주지 않았던 프라이빗 라이브.<br>
-      오직 이 날만 공개되는 순간.<br>
-      <strong>이 밤은 기록되지 않습니다.</strong>
+      오직 이 날, 이 장소에서만 만날 수 있는 비밀의 무대.<br><br>
+      이 밤은 기록되지 않습니다.<br>
+      <strong>당신의 기억 속에만 남습니다.</strong>
     </div>
   </div>
 
@@ -397,7 +416,10 @@ body::-webkit-scrollbar-thumb:hover{
   </div>
 
   <div class="footer">
-    ⓡ RIZ ENTERTAINMENT
+    ⓡ RIZ ENTERTAINMENT<br>
+    <div style="opacity:.5; margin-top:6px; letter-spacing:0.15em; font-size:12px;">
+      RIZ ENTERTAINMENT • REALWORLD SPECIAL EDITION
+    </div>
   </div>
 
 </div>
@@ -457,3 +479,5 @@ window.addEventListener("scroll",()=>{
 
 </body>
 </html>
+
+
