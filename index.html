@@ -245,6 +245,23 @@ body.lock-scroll{ overflow:hidden; }
   box-shadow:0 0 35px rgba(34,211,238,.35);
 }
 
+/* ✨ 사진 등장 효과 */
+.secret-card img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity .45s ease;
+  z-index:-1;
+  filter:brightness(.7);
+  border-radius:22px;
+}
+.secret-card:hover img{
+  opacity:1;
+}
+
 .secret-card .q{
   font-size:45px;
   color:#ffffff15;
@@ -257,16 +274,6 @@ body.lock-scroll{ overflow:hidden; }
   -webkit-background-clip:text;
   color:transparent;
   font-weight:700;
-}
-
-/* Keywords */
-.keyword-box{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  font-size:24px;
-  color:#cbd5e1;
-  text-align:center;
 }
 
 /* Footer */
@@ -327,26 +334,56 @@ body.lock-scroll{ overflow:hidden; }
     <div class="section-title">Line-Up</div>
     <div class="divider"></div>
 
+    <!-- MC -->
+    <div class="section-title" style="font-size:32px; margin-top:40px;">MC</div>
     <div class="secret-grid">
-      <div class="secret-card"><div class="q">???</div><div class="name">Artist A</div></div>
-      <div class="secret-card"><div class="q">???</div><div class="name">Artist B</div></div>
-      <div class="secret-card"><div class="q">???</div><div class="name">Artist C</div></div>
-      <div class="secret-card"><div class="q">???</div><div class="name">Artist D</div></div>
-      <div class="secret-card"><div class="q">???</div><div class="name">Artist E</div></div>
-      <div class="secret-card"><div class="q">???</div><div class="name">Artist F</div></div>
+      <div class="secret-card">
+        <img src="img/mc.jpg" alt="">
+        <div class="q">???</div>
+        <div class="name">MC</div>
+      </div>
     </div>
-  </div>
 
-  <!-- Concept -->
-  <div class="section">
-    <div class="section-title">Concept</div>
-    <div class="divider"></div>
+    <!-- Main Artists -->
+    <div class="section-title" style="font-size:32px; margin-top:70px;">Main Artists</div>
+    <div class="secret-grid">
 
-    <div class="keyword-box">
-      ✦ Hidden Tracks — 드러나지 않았던 비밀의 음<br>
-      ✦ Lost Melodies — 잊혀진 선율의 귀환<br>
-      ✦ Secret Sessions — 기록되지 않은 비밀의 무대<br>
-      ✦ Unreleased Moments — 공개되지 않았던 순간들
+      <div class="secret-card">
+        <img src="img/sunja.jpg" alt="">
+        <div class="q">???</div>
+        <div class="name">순자</div>
+      </div>
+
+      <div class="secret-card">
+        <img src="img/chopa.jpg" alt="">
+        <div class="q">???</div>
+        <div class="name">쵸파</div>
+      </div>
+
+      <div class="secret-card">
+        <img src="img/samchil.jpg" alt="">
+        <div class="q">???</div>
+        <div class="name">삼칠</div>
+      </div>
+
+    </div>
+
+    <!-- Guests -->
+    <div class="section-title" style="font-size:32px; margin-top:70px;">Guests</div>
+    <div class="secret-grid">
+
+      <div class="secret-card">
+        <img src="img/guest1.jpg" alt="">
+        <div class="q">???</div>
+        <div class="name">Guest 1</div>
+      </div>
+
+      <div class="secret-card">
+        <img src="img/guest2.jpg" alt="">
+        <div class="q">???</div>
+        <div class="name">Guest 2</div>
+      </div>
+
     </div>
   </div>
 
